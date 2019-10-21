@@ -1,10 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Node{
-	public:
+struct Node{
 	int data;
-	Node *next;	
+	struct Node *next;	
 };
 
 void printList(Node *n){
