@@ -1,0 +1,26 @@
+long largestRectangle(vector<int> h) {
+    int n=h.size();
+    stack<int> s;
+
+    int ma=0;
+    int topstack, areawithtop;
+
+    int i=0;
+    while(i<n){
+        if(s.empty() || h[s.top()]<=h[i]) s.push(i),++i;
+        else {
+            topstack=s.top();
+            s.pop();
+            areawithtop=h[topstack]*(s.empty() ? i : i-s.top()-1);
+            if(ma<areawithtop) ma=areawithtop;
+        }
+    }
+
+    while(s.empty()==false){
+        topstack=s.top();
+        s.pop();
+        areawithtop=h[topstack]*(s.empty() ? i : i-s.top()-1);
+        if(ma<areawithtop) ma=areawithtop;
+    }
+    return ma;
+}
